@@ -184,6 +184,7 @@ public class Main {
                             public void handleEvent(Event arg0) {
                                 try {
                                     Main.this.openShellWindow(((Integer) Main.this.table.getSelection()[0].getData("id")).intValue());
+                                    //Main.this.openShellWindow(49);
                                 } catch (Exception e) {
                                     e.printStackTrace();
                                 }

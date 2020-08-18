@@ -6,6 +6,7 @@ import javax.servlet.ServletOutputStream;
 import javax.servlet.jsp.PageContext;
 import java.io.File;
 import java.nio.charset.StandardCharsets;
+import java.util.Base64;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -69,12 +70,16 @@ public class BasicInfo {
                 if (version.compareTo("1.9") >= 0) {
                     getClass();
                     Class Base64 = Class.forName("java.util.Base64");
-                    Object Encoder = Base64.getMethod("getEncoder", null).invoke(Base64, null);
-                    value = (String) Encoder.getClass().getMethod("encodeToString", new Class[]{byte[].class}).invoke(Encoder, new Object[]{value.getBytes(StandardCharsets.UTF_8)});
+                    Object Encoder = Base64.getMethod("getEncoder", (Class[])null).invoke(Base64, (Object[])null);
+                    value = (String) Encoder.getClass().getMethod("encodeToString", byte[].class).invoke(Encoder, value.getBytes("UTF-8"));
                 } else {
-                    getClass();
-                    Object Encoder2 = Class.forName("sun.misc.BASE64Encoder").newInstance();
-                    value = ((String) Encoder2.getClass().getMethod("encode", new Class[]{byte[].class}).invoke(Encoder2, new Object[]{value.getBytes(StandardCharsets.UTF_8)})).replace("\n", "").replace("\r", "");
+                    this.getClass();
+                    Class Base64 = Class.forName("sun.misc.BASE64Encoder");
+                    Object
+                            Encoder = Base64.newInstance();
+                    value = (String)Encoder.getClass().getMethod("encode", byte[].class).invoke(Encoder, value.getBytes("UTF-8"));
+                    value = value.replace("\n", "").replace("\r", "");
+
                 }
             }
             sb.append(value);

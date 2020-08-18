@@ -137,9 +137,9 @@ public class MainShell extends Shell {
 
         try {
             Image startImage = new Image(display, new ByteArrayInputStream(Utils.getResourceData("net/rebeyond/behinder/resource/start.png")));
-            realCmdBtn.setData("start", startImage);
+            realCmdBtn.setData("start",startImage);
             Image stopImage = new Image(display, new ByteArrayInputStream(Utils.getResourceData("net/rebeyond/behinder/resource/stop.png")));
-            realCmdBtn.setData("stop", stopImage);
+            realCmdBtn.setData("stop",stopImage);
             realCmdBtn.setImage(startImage);
         } catch (Exception var68) {
             var68.printStackTrace();

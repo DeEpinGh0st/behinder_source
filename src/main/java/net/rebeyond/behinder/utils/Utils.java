@@ -560,18 +560,18 @@ public class Utils {
     }
 
     public static byte[] getResourceData(String filePath) throws Exception {
-        InputStream is = Utils.class.getClassLoader().getResourceAsStream(filePath);
+        InputStream inputStream = Utils.class.getClassLoader().getResourceAsStream(filePath);
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
         byte[] buffer = new byte[102400];
         boolean var4 = false;
 
         int num;
-        while ((num = is.read(buffer)) != -1) {
+        while ((num = inputStream.read(buffer)) != -1) {
             bos.write(buffer, 0, num);
             bos.flush();
         }
 
-        is.close();
+        inputStream.close();
         return bos.toByteArray();
     }
 
